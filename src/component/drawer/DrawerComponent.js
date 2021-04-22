@@ -74,6 +74,7 @@ export default class DrawerComponent extends Component {
             renderItem={this.renderMenu}
             ListFooterComponent={
               <TouchableOpacity
+              
                 
                 style={styles.itemMenu}
                 onPress={() => this.props.navigation.replace('Login')}>

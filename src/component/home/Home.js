@@ -137,9 +137,13 @@ export default class Home extends Component {
           //   },
           // ]}
         />
+        
         <ImageBackground
           source={Images.ic_bg_timecard}
           style={{height: screenHeight, width: screenWidth}}>
+            <View style={{justifyContent:'space-between'}}>
+
+            </View>
           <View
             style={{
               flexDirection: 'row',
@@ -183,7 +187,7 @@ export default class Home extends Component {
               }}>
               <Text style={{fontSize: 30, fontWeight: 'bold', color: 'orange'}}>
                 {this.state.time}
-                {/* {moment(new Date()).format('LTS')} */}
+               
               </Text>
             </View>
           </View>
@@ -287,11 +291,7 @@ export default class Home extends Component {
           </View>
           <View
             style={{
-              // flexDirection:'row',
-              // justifyContent:'flex-start',
-              // alignItems :'center',
-
-              //   marginVertical: 15,
+              
               marginHorizontal: 15,
             }}>
             {this.state.checkIn === true ? (
@@ -323,11 +323,7 @@ export default class Home extends Component {
                 </Text>
               </View>
             )}
-            {/* <Image
-                source={Images.ic_error_data}
-                style={{height: 30, width: 30}}
-                resizeMode="contain"></Image>
-              <Text style={{marginLeft:10}}>Bạn chưa Check In</Text> */}
+           
             {this.state.checkOut === true ? (
               <View
                 style={{
@@ -358,14 +354,10 @@ export default class Home extends Component {
               </View>
             )}
           </View>
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            {/* <LottieView
-              source={require('../../res/Json/24280-calendar-booking.json')}
-              autoPlay
-              loop
-              style={{width: screenWidth, height: screenHeight / 2}}
-            /> */}
-            <Image source={Images.time_management} style={{ height:screenWidth , width:screenWidth }}
+          <View style={{justifyContent: 'flex-end', alignItems: 'flex-end' }}>
+            
+          
+            <Image source={Images.time_management} style={{ height:screenHeight/2 , width:screenWidth  }}
             resizeMode='contain'
             />
       

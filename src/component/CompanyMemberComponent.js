@@ -114,7 +114,11 @@ export default class CompanyMemberComponent extends Component {
     }
   }
 
-  renderItem = item => (
+  renderItem = (item) => 
+ 
+ 
+ 
+  (
     <TouchableOpacity
       onPress={() => {
         this.props.navigation.navigate('InfoMemberComponent', {
@@ -148,11 +152,13 @@ export default class CompanyMemberComponent extends Component {
         </View>
 
         <Text style={{marginTop: 5, fontWeight: '600'}}>
-          {item.item.name.toUpperCase()}
+          {item.item.name}
         </Text>
-        <Text style={{fontWeight: '600'}}>
+        {item.item.position === null? null : <Text style={{fontWeight: '600'}}>
           {item.item.position.toUpperCase()}
-        </Text>
+          
+        </Text> }
+       
       </View>
     </TouchableOpacity>
   );
@@ -162,8 +168,8 @@ export default class CompanyMemberComponent extends Component {
     if (text.length >= 1) {
       const newData = this.state.dataSearch.filter(item => {
         // console.log(item);
-        const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase();
-        const textData = text.toUpperCase();
+        const itemData = item.name ? item.name : '';
+        const textData = text;
         return itemData.indexOf(textData) > -1;
       });
       this.setState({dataMB: newData});
@@ -178,8 +184,8 @@ export default class CompanyMemberComponent extends Component {
     if (text.length >= 1) {
       const newData = this.state.dataSearch.filter(item => {
         // console.log(item);
-        const itemData = item.position ? item.position.toUpperCase() : ''.toUpperCase();
-        const textData = text.toUpperCase();
+        const itemData = item.position ? item.position : '';
+        const textData = text;
         return itemData.indexOf(textData) > -1;
       });
       this.setState({dataMB: newData});
@@ -189,6 +195,7 @@ export default class CompanyMemberComponent extends Component {
     }
   };
   render() {
+    
     return (
       <View style={{flex: 1}}>
         <Header
@@ -259,7 +266,7 @@ export default class CompanyMemberComponent extends Component {
             
             contentcontainerstyle ={{flexGrow:1,}}
               data={this.state.dataMB}
-              keyExtractor={(item, index) => String(index)}
+              keyExtractor={(index) => String(index)}
               renderItem={this.renderItem}
               numColumns={2}
             />
