@@ -114,11 +114,7 @@ export default class CompanyMemberComponent extends Component {
     }
   }
 
-  renderItem = (item) => 
- 
- 
- 
-  (
+  renderItem = item => (
     <TouchableOpacity
       onPress={() => {
         this.props.navigation.navigate('InfoMemberComponent', {
@@ -152,13 +148,11 @@ export default class CompanyMemberComponent extends Component {
         </View>
 
         <Text style={{marginTop: 5, fontWeight: '600'}}>
-          {item.item.name}
+          {item.item.name.toUpperCase()}
         </Text>
-        {item.item.position === null? null : <Text style={{fontWeight: '600'}}>
-          {item.item.position.toUpperCase()}
-          
-        </Text> }
-       
+        <Text style={{fontWeight: '600'}}>
+          {item.item.position}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -168,8 +162,8 @@ export default class CompanyMemberComponent extends Component {
     if (text.length >= 1) {
       const newData = this.state.dataSearch.filter(item => {
         // console.log(item);
-        const itemData = item.name ? item.name : '';
-        const textData = text;
+        const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase();
+        const textData = text.toUpperCase();
         return itemData.indexOf(textData) > -1;
       });
       this.setState({dataMB: newData});
@@ -184,8 +178,8 @@ export default class CompanyMemberComponent extends Component {
     if (text.length >= 1) {
       const newData = this.state.dataSearch.filter(item => {
         // console.log(item);
-        const itemData = item.position ? item.position : '';
-        const textData = text;
+        const itemData = item.position ? item.position.toUpperCase() : ''.toUpperCase();
+        const textData = text.toUpperCase();
         return itemData.indexOf(textData) > -1;
       });
       this.setState({dataMB: newData});
@@ -195,7 +189,6 @@ export default class CompanyMemberComponent extends Component {
     }
   };
   render() {
-    
     return (
       <View style={{flex: 1}}>
         <Header
@@ -207,9 +200,7 @@ export default class CompanyMemberComponent extends Component {
 
         <ImageBackground
           source={Images.ic_bg_timecard}
-          style={{height: screenHeight, width: screenWidth,flex:1}}
-          imageStyle={{flex:1}}
-          >
+          style={{height: screenHeight, width: screenWidth}}>
           <View
             style={{
               marginTop: 5,
@@ -229,15 +220,12 @@ export default class CompanyMemberComponent extends Component {
                 borderColor: '#BFBFBF',
                 flex:1
               }}>
-                <View style={{flex : 0.1}}> 
-                  <Icon
+              <Icon
                 name="search"
                 style={{color: '#BFBFBF', marginLeft: 10}}
                 size={20}
               />
-                  </View>
-                  <View style={{flex : 0.9}}>
-                    <TextInput
+              <TextInput
               
                 // multiline
                 // value={this.state.search}
@@ -249,31 +237,38 @@ export default class CompanyMemberComponent extends Component {
                   this.textSearch(text);
                 }}
                 style={{
-                  paddingLeft: 10,
                   
                   height: 40,
                 }}
-                placeholder="Search name..."/>
-                  </View>
-
-             
-              
+                placeholder="Search name..."></TextInput>
             </View>
+            {/* <View style={{flex:0.5}}>
+            <DropDownPicker
             
+                  items={this.state.data}
+                  // defaultValue={this.state.country}
+                  placeholder="Chọn ngành nghề"
+                  containerStyle={{height: 40, width: (screenWidth * 0.8) / 2}}
+                  style={{backgroundColor: '#fafafa' , }}
+                  itemStyle={{
+                    justifyContent: 'flex-start',
+                  }}
+                  dropDownStyle={{backgroundColor: '#fafafa'}}
+                  onChangeItem={item =>
+                    this.itemSearch(item.value)
+                  }
+                />
+            </View> */}
           </View>
-          <View style={{flex : 1  }}>
+
+          <ScrollView nestedScrollEnabled>
             <FlatList
-            
-            contentcontainerstyle ={{flexGrow:1,}}
               data={this.state.dataMB}
-              keyExtractor={(index) => String(index)}
+              keyExtractor={(item, index) => String(index)}
               renderItem={this.renderItem}
               numColumns={2}
             />
-          </View>
-            
-            
-
+          </ScrollView>
         </ImageBackground>
       </View>
     );

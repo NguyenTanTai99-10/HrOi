@@ -12,6 +12,7 @@ import {
   Platform,
   KeyboardAvoidingView,
   ScrollView,
+  Alert
 } from 'react-native';
 // import {Avatar} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -19,7 +20,11 @@ import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Images from '../res/image';
 import {colors, fonts, screenWidth, screenHeight} from '../res/style/theme';
+import Animation from './custom/Animated';
 import Header from './custom/Header';
+import { PERMISSIONS, request, check, RESULTS } from 'react-native-permissions';
+import ImagePicker from 'react-native-image-picker';
+
 
 export default class UpdateInfoPersonComponent extends Component {
   constructor(props) {
@@ -31,19 +36,123 @@ export default class UpdateInfoPersonComponent extends Component {
         gmai: 'fermatandrew@gmail.com',
         phone: '0987996939',
         position: 'Wedsite Developer',
+        animated :false
     
     
     };
   }
+   onCheckCameraPermission = () => {
+    check(Platform.OS === 'android' ?
+        PERMISSIONS.ANDROID.CAMERA : PERMISSIONS.IOS.CAMERA).then((status) => {
+            console.log('status===',RESULTS.DENIED);
+            if (status === RESULTS.DENIED) {
+                request(Platform.OS === 'android' ?
+                    PERMISSIONS.ANDROID.CAMERA : PERMISSIONS.IOS.CAMERA).then(result => {
+                        console.log("result==",result);
+                        if (result === RESULTS.GRANTED) {
+                          this.onCheckPhotoLibraryPermission()
+                        }
+                    })
+            } else
+                if (status === RESULTS.GRANTED) {
+                  this.onCheckPhotoLibraryPermission()
+                }
+        }).catch(error => {
+          console.log('vào day1');
+          Alert.alert('123');
+        })
+}
+ onCheckPhotoLibraryPermission = () => {
+    check(Platform.OS === 'android' ?
+        PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE : PERMISSIONS.IOS.PHOTO_LIBRARY).then((status) => {
+            if (status === RESULTS.DENIED) {
+                request(Platform.OS === 'android' ?
+                    PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE : PERMISSIONS.IOS.PHOTO_LIBRARY).then(result => {
+                        console.log("result1====",result);
+                        if (result === RESULTS.GRANTED) {
+                            if (Platform.OS === 'ios') {
+                              this.onImagePicker();
+                            } else {
+                              this.onCheckWriteStoragePermission()
+                            }
+                        }
+                    })
+            }
+            if (status === RESULTS.GRANTED) {
+                if (Platform.OS === 'ios') {
+                  this.onImagePicker();
+                } else {
+                  this.onCheckWriteStoragePermission()
+                }
+            }
+        }).catch(error => {
+          console.log('vào day2');
+          
+             Alert.alert('123');
+        })
+}
+ onCheckWriteStoragePermission = () => {
+    check(PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE).then((status) => {
+        if (status === RESULTS.DENIED) {
+            request(PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE).then(result => {
+                console.log(result);
+                if (result === RESULTS.GRANTED) {
+                  this.onImagePicker();
+                }
+            })
+        }
+        if (status === RESULTS.GRANTED) {
+            onImagePicker();
+        }
+    }).catch(error => {
+      console.log('vào day3');
+      
+      Alert.alert('123');
+    })
+}
+ openImage = () => {
+    this.onCheckCameraPermission()
+}
+ onImagePicker = () => {
+    ImagePicker.showImagePicker((response) => {
+        if (response.didCancel) {
+            console.log('User cancelled image picker');
+            console.log('vào day4');
+        } else if (response.error) {
+          console.log('vào day5');
+
+        } else if (response.customButton) {
+            console.log('User tapped custom button: ', response.customButton);
+        } else {
+            // You can also display the image using data:
+            // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+            // console.log(response.uri,"uri");
+            // setProgress(true);
+            // setIsMessage(true);
+            // dispath(avatarUserAction(
+            //     route.params.useInfor.id, route.params.useInfor.token, response.uri
+            // ));
+            // setAvatar('data:image/jpeg;base64,' + response.data);
+        }
+    });
+}
   upDate = () => {
-    this.props.navigation.goBack();
+    // this.props.navigation.goBack();
+    setTimeout(() => this.props.navigation.goBack(), 5000)
+    this.setState({animated:true})
   };
 
   render() {
-    console.log(this.state.name);
+    
 
     return (
       <View style={{flex: 1}}>
+        {this.state.animated && (
+          <Animation
+            offAnimatedState={() => this.setState({animated: false})}
+            titlte = "Update Thành Công"
+          />
+        )}
         <Header
           isShowBack
           onPressBack={() => this.props.navigation.goBack()}
@@ -56,6 +165,7 @@ export default class UpdateInfoPersonComponent extends Component {
           style={{width: screenWidth, height: screenHeight, flex: 1}}>
           <View style={{height: screenWidth * 0.5}}>
             <TouchableOpacity
+            onPress={()=>{this.openImage()}}
               style={{
                 width: screenWidth * 0.4,
                 height: screenWidth * 0.4,

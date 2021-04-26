@@ -14,7 +14,7 @@ import { colors, fonts, screenWidth, screenHeight } from '../res/style/theme';
 import Images from '../res/image';
 import Header from './custom/Header';
 
-// import LottieView from 'lottie-react-native';
+import LottieView from 'lottie-react-native';
 
 import TextInputAnimated from './custom/TextInputAnimated';
 

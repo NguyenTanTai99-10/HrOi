@@ -22,6 +22,7 @@ import {
   widthPercentageToDP as widthPercentage,
   heightPercentageToDP as heightPercentage,
 } from 'react-native-responsive-screen';
+import Header from '../custom/Header';
 // import {notification} from '../Notification/Notification';
 
 export default class Home extends Component {
@@ -107,36 +108,10 @@ export default class Home extends Component {
     // console.log(this.state.timeNow);
     return (
       <View style={{flex: 1}}>
-        <HeaderCustom
-          title="HOME"
-          itemLeft={[
-            {
-              image: {
-                source: Images.ic_menu_right,
-                style: {
-                  width: Sizes.h40,
-                  height: Sizes.h40,
-                },
-              },
-              onPress: () => {
-                this.props.navigation.openDrawer();
-              },
-              type: 'image',
-            },
-          ]}
-          // itemRight={[
-          //   {
-          //     text: {
-          //       style: {
-          //         fontSize: Sizes.h32,
-          //         color: '#fff'
-          //       },
-          //       name: 'Save',
-          //       onPress: () => { }
-          //     },
-          //     type: 'text',
-          //   },
-          // ]}
+        <Header
+          isShowMenu
+          onPressMenu={() => this.props.navigation.openDrawer()}
+          title="Home"
         />
         
         <ImageBackground

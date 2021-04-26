@@ -156,7 +156,7 @@ export default class Login extends Component {
       }
    }
    render() {
-      console.log('text===', this.state.password);
+      // console.log('text===', this.state.password);
       return (
          <ScrollView
             showsVerticalScrollIndicator={false}

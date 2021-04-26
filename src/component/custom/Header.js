@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   Image,
+  Platform,
   
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
@@ -94,6 +95,7 @@ const Header = props => {
   //////////////////////////////////
   return (
     <View>
+      
       <StatusBarView />
       {/* <View style={styles.container}> */}
       <ImageBackground

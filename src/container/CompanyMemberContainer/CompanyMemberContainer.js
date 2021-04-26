@@ -11,7 +11,7 @@ export class CompanyMemberContainer extends Component {
 }
 
 const mapStateToProps = state => {
-   // console.log('state.CompanyMemberReducer.data===',state.loginReducer.data);
+  
   return {
     statusCM: state.CompanyMemberReducer.status,
     dataCM: state.CompanyMemberReducer.data,

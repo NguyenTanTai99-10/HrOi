@@ -245,7 +245,7 @@ TextInputAnimated.defaultProps = {
 };
 const styles = StyleSheet.create({
    container: {
-      borderColor: colors.gray3,
+      borderColor: "#BFBFBF",
       borderRadius: BASE_SIZE / 2,
       borderWidth: 1,
       marginHorizontal: BASE_SIZE,
