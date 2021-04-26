@@ -49,7 +49,9 @@ export default class   TextInputAnimated extends Component {
       }).start();
    }
    requireInput = () => <Text style={{ color: colors.red }}>*</Text>;
-   input = () => (
+   input = () =>
+  
+    (
       <TextInput
          {...this.props}
          ref={this.textInput}
@@ -58,7 +60,7 @@ export default class   TextInputAnimated extends Component {
          editable={!this.props.disabled}
          style={[styles.textInput, this.props.disabled && { color: colors.gray }]}
          style={styles.textInput}
-         onFocus={this.handleFocus}
+         onFocus={()=>{this.handleFocus();this.props.onPressFocus()}}
          onBlur={this.handleBlur}
          blurOnSubmit
       />
@@ -239,6 +241,7 @@ export default class   TextInputAnimated extends Component {
 TextInputAnimated.defaultProps = {
    onPress: () => {},
    onPressClear: () => {},
+   onPressFocus:()=>{}
 };
 const styles = StyleSheet.create({
    container: {

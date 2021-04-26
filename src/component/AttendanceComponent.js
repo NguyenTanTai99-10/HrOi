@@ -127,7 +127,7 @@ export default class AttendanceComponent extends Component {
               </View>
             </ImageBackground>
             
-              <ScrollView style={{flex:1 ,marginBottom: 20,}}>
+              <ScrollView style={{flex:1 }}>
                   <FlatList
                 style={{}}
                 data={this.state.data}

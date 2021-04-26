@@ -33,6 +33,9 @@ const Images = {
   // welcome_PNG32.png
   // forgot_password
   // —Pngtree—deadline time management business concept_5316423.png
+  //icon_upload_img.png
+  icon_upload_img: require('./img/icon_upload_img.png'),
+
   time_management: require('./img/PngItem.png'),
   forgot_password: require('./img/forgot-password-amico-1951.png'),
   welcome_PNG32: require('./img/welcome_PNG32.png'),

@@ -4,8 +4,9 @@ import {
   View,
   ImageBackground,
   Image,
-  TouchableHighlight,
+  
   TouchableOpacity,
+  Platform
 } from 'react-native';
 import Images from '../../res/image';
 import Sizes from '../../utils/Sizes';
@@ -354,10 +355,10 @@ export default class Home extends Component {
               </View>
             )}
           </View>
-          <View style={{justifyContent: 'flex-end', alignItems: 'flex-end' }}>
+          <View style={{justifyContent: 'center', alignItems: 'center', flex:1 , paddingBottom:Platform.OS === 'ios' ? null : 20}}>
             
           
-            <Image source={Images.time_management} style={{ height:screenHeight/2 , width:screenWidth  }}
+            <Image source={Images.time_management} style={{ height:screenWidth , width:screenWidth  }}
             resizeMode='contain'
             />
       

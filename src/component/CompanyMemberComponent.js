@@ -261,7 +261,7 @@ export default class CompanyMemberComponent extends Component {
             </View>
             
           </View>
-          <View style={{flex : 1 , marginBottom: 40, }}>
+          <View style={{flex : 1  }}>
             <FlatList
             
             contentcontainerstyle ={{flexGrow:1,}}

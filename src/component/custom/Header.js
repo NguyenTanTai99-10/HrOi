@@ -77,6 +77,20 @@ const Header = props => {
       {/* </View> */}
     </View>
   );
+  const textRight = () => (
+    <TouchableOpacity
+      
+      style={{ marginHorizontal: 10,
+      width: 40,
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center',}}
+      onPress={() => props.onPressNavigate()}>
+      <Text  style={{color:'white', fontSize:17 ,fontWeight: '700',}} >
+        Edit
+      </Text>
+    </TouchableOpacity>
+  );
   //////////////////////////////////
   return (
     <View>
@@ -103,9 +117,13 @@ const Header = props => {
         </View>
         <View style={{justifyContent: 'center', alignItems: 'flex-end' ,flex:0.2}}>
           {props.isShowImage ? images(props.image) : null}
+          {/* isShowRight */}
+          {props.isShowRight ? iconRight() : null}
+          
+          
           
 
-          {props.isShowRight ? iconRight() : null}
+          {props.isShowTextRight ? textRight() : null}
         </View>
       </ImageBackground>
       {/* </View> */}
@@ -117,7 +135,8 @@ export default Header;
 Header.defaultProps = {
   onPressBack: () => {},
   onPressMenu: () => {},
-  iconRight :()=>{}
+  iconRight :()=>{},
+  onPressNavigate:()=>{}
 };
 const styles = StyleSheet.create({
   container: {

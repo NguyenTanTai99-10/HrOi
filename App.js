@@ -33,6 +33,7 @@ import YourGetPermissionContainer from './src/container/GetPermissionContainer/Y
 import ButtonGetPemissionComponent from './src/component/ButtonGetPemissionComponent';
 import CheckGetPemissionContainer from './src/container/GetPermissionContainer/CheckGetPemissionContainer';
 import AddRequiesComponent from './src/component/AddRequiesComponent';
+import UpdateInfoPersonContainer from './src/container/UpdateInfoPersonContainer/UpdateInfoPersonContainer';
 
 
 
@@ -127,6 +128,8 @@ const App = () => {
             <Stack.Screen name="ButtonGetPemissionComponent" component={ButtonGetPemissionComponent} />
             <Stack.Screen name="CheckGetPemissionContainer" component={CheckGetPemissionContainer} />
             <Stack.Screen name="AddRequiesComponent" component={AddRequiesComponent} />
+            <Stack.Screen name="UpdateInfoPersonContainer" component={UpdateInfoPersonContainer} />
+            {/* UpdateInfoPersonContainer */}
             {/* ButtonGetPemission */}
             {/* CompanyMemberComponent */}
             {/* AttendanceContainer */}

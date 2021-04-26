@@ -45,8 +45,10 @@ export default class UserInfo extends Component {
     return (
       <View style={styles.container}>
         <Header
+        isShowTextRight
           isShowBack
           onPressBack={() => this.props.navigation.goBack()}
+          onPressNavigate={()=>this.props.navigation.navigate('UpdateInfoPersonContainer')}
           title="Thông tin cá nhân"
         />
         <ImageBackground

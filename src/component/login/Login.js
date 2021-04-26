@@ -89,7 +89,7 @@ export default class Login extends Component {
       this.setState({ password: '' });
    };
    onChangePassword = (text) => {
-      console.log('text===', text);
+      
       this.setState({ password: text });
    };
 
@@ -156,6 +156,7 @@ export default class Login extends Component {
       }
    }
    render() {
+      console.log('text===', this.state.password);
       return (
          <ScrollView
             showsVerticalScrollIndicator={false}
