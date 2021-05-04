@@ -15,7 +15,9 @@ import moment from 'moment';
 export const DatetimePicker = () => {
   //==========================================================================
   const [date, setDate] = useState(new Date());
-  const [DateStart, setDateStart] = useState('Chọn Ngày Bắt Đầu');
+  const [minDate, setMinDate] = useState(new Date());
+
+  const [DateStart, setDateStart] = useState('Day Start');
 
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
@@ -25,6 +27,7 @@ export const DatetimePicker = () => {
     console.log('DayStart=======', DayStart);
     setShow(Platform.OS === 'ios');
     setDateStart(DayStart);
+    setMinDate(selectedDate)
   };
 
   const showMode = (currentMode) => {
@@ -38,7 +41,7 @@ export const DatetimePicker = () => {
 
   //================================================================
   const [date1, setDate1] = useState(new Date());
-  const [DateEnd, setDateEnd] = useState('Chọn Ngày Kết Thúc');
+  const [DateEnd, setDateEnd] = useState('Day End');
 
   const [mode1, setMode1] = useState('date');
   const [show1, setShow1] = useState(false);
@@ -61,7 +64,7 @@ export const DatetimePicker = () => {
 
   //==========================================================================
   const [date2, setDate2] = useState(new Date());
-  const [TimeStart, seTimeStart] = useState('Thời Gian Bắt Đầu');
+  const [TimeStart, seTimeStart] = useState('Time Start');
   const [mode2, setMode2] = useState('date');
   const [show2, setShow2] = useState(false);
 
@@ -89,7 +92,7 @@ export const DatetimePicker = () => {
   //================================================================
   //   //==========================================================================
   const [date3, setDate3] = useState(new Date());
-  const [TimeEnd, seTimeEnd] = useState('Thời Gian Kết Thúc');
+  const [TimeEnd, seTimeEnd] = useState('Time End');
   const [mode3, setMode3] = useState('date');
   const [show3, setShow3] = useState(false);
 
@@ -132,7 +135,7 @@ export const DatetimePicker = () => {
           flexDirection: 'row',
           justifyContent: 'space-between',
         }}>
-        <View style={{marginTop: 10,}}>
+        <View style={{}}>
           <Text style={{fontSize: 15, fontWeight: '700'}}>Chọn Ngày Bắt Đầu * </Text>
           <TouchableOpacity
             style={{
@@ -150,7 +153,7 @@ export const DatetimePicker = () => {
               borderWidth:1
             }}
             onPress={showDatepicker}>
-            <Text>{DateStart}</Text>
+            <Text numberOfLines={1}  >{DateStart}</Text>
 
             <Image
               source={require('../../res/image/img/arrow-down.png')}
@@ -162,11 +165,11 @@ export const DatetimePicker = () => {
             />
           </TouchableOpacity>
         </View>
-        <View style={{marginTop: 10,}}>
+        <View style={{marginHorizontal:10,}}>
           <Text style={{fontSize: 15, fontWeight: '700'}}>Chọn Thời Gian Bắt Đầu * </Text>
           <TouchableOpacity
             style={{
-              width: (screenWidth * 0.8) / 2,
+              width: (screenWidth *0.8 ) / 2,
               marginTop: 10,
 
               height: 40,
@@ -177,10 +180,11 @@ export const DatetimePicker = () => {
               backgroundColor: '#FFFFFF',
               borderColor: '#BFBFBF',
               paddingHorizontal: 10,
+              
               borderWidth:1
             }}
             onPress={showTimepicker2}>
-            <Text>{TimeStart}</Text>
+            <Text numberOfLines={1}  >{TimeStart}</Text>
             <Image
               source={require('../../res/image/img/arrow-down.png')}
               style={{
@@ -220,7 +224,7 @@ export const DatetimePicker = () => {
           flexDirection: 'row',
           justifyContent: 'space-between',
         }}>
-        <View style={{marginTop: 10,}}>
+        <View style={{}}>
           <Text style={{fontSize: 15, fontWeight: '700'}}>Chọn Ngày Kết Thúc * </Text>
           <TouchableOpacity
             style={{
@@ -238,7 +242,7 @@ export const DatetimePicker = () => {
               borderWidth:1
             }}
             onPress={showDatepicker1}>
-            <Text>{DateEnd}</Text>
+            <Text numberOfLines={1}  >{DateEnd}</Text>
 
             <Image
               source={require('../../res/image/img/arrow-down.png')}
@@ -250,7 +254,7 @@ export const DatetimePicker = () => {
             />
           </TouchableOpacity>
         </View>
-        <View style={{marginTop: 10,}}>
+        <View style={{marginHorizontal:10,}}>
           <Text style={{fontSize: 15, fontWeight: '700'}}>
             Chọn Thời Gian Kết Thúc *{' '}
           </Text>
@@ -270,13 +274,14 @@ export const DatetimePicker = () => {
               borderWidth:1
             }}
             onPress={showTimepicker3}>
-            <Text>{TimeEnd}</Text>
+            <Text numberOfLines={1} >{TimeEnd}</Text>
             <Image
               source={require('../../res/image/img/arrow-down.png')}
               style={{
                 width: Sizes.h30,
                 height: Sizes.h30,
                 resizeMode: 'contain',
+                
               }}
             />
           </TouchableOpacity>
@@ -290,6 +295,7 @@ export const DatetimePicker = () => {
           is24Hour={true}
           display="default"
           onChange={onChange1}
+          minimumDate={minDate}
         />
       )}
       {show3 && (
@@ -300,6 +306,7 @@ export const DatetimePicker = () => {
           is24Hour={true}
           display="default"
           onChange={onChange3}
+          mi
         />
       )}
     </View>
