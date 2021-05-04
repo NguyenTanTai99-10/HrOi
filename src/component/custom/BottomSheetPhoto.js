@@ -95,7 +95,8 @@ const BottomSheetPhoto = forwardRef((props, ref) => {
                 style={{
                   justifyContent: 'center',
                   alignItems: 'center',
-                  padding: Sizes.h16,
+                  marginHorizontal: Sizes.h16,
+                  marginVertical: Sizes.h16,
                 }}>
                 <TouchableOpacity
                   onPress={() => {
@@ -106,7 +107,7 @@ const BottomSheetPhoto = forwardRef((props, ref) => {
                     padding: Sizes.h16,
                     borderWidth: 1,
                     backgroundColor: '#bb64a1',
-                    width: 150,
+                    width: '70%',
                     borderRadius: 6,
                     borderColor: 'white',
                     flexDirection: 'row',
@@ -121,7 +122,8 @@ const BottomSheetPhoto = forwardRef((props, ref) => {
                 style={{
                   justifyContent: 'center',
                   alignItems: 'center',
-                  padding: Sizes.h16,
+                  marginHorizontal: Sizes.h16,
+                  marginVertical: Sizes.h16,
                 }}>
                 <TouchableOpacity
                   onPress={() => {
@@ -132,7 +134,7 @@ const BottomSheetPhoto = forwardRef((props, ref) => {
                     padding: Sizes.h16,
                     borderWidth: 1,
                     backgroundColor: '#bb64a1',
-                    width: 150,
+                    width: '70%',
                     borderRadius: 6,
                     borderColor: 'white',
                     flexDirection: 'row',
